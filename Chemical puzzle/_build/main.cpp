@@ -9,6 +9,8 @@ int main(void)
 
     SetTargetFPS(60);
 
+    ToggleFullscreen();
+
     while (!WindowShouldClose())
     {
         BeginDrawing();
