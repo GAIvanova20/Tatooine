@@ -173,6 +173,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\game\src\screens.h" />
+    <ClInclude Include="levelFunctions.h" />
+    <ClInclude Include="levelOne.h" />
+    <ClInclude Include="levelThree.h" />
+    <ClInclude Include="levelTwo.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="menu.h" />
   </ItemGroup>
@@ -182,6 +186,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="levelFunctions.cpp" />
+    <ClCompile Include="levelOne.cpp" />
+    <ClCompile Include="levelThree.cpp" />
+    <ClCompile Include="levelTwo.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="menu.cpp" />
   </ItemGroup>
