@@ -9,6 +9,21 @@ void drawMenu(Texture2D menuBackground)
     DrawText("Created by team Tatooine", 710, 550, 40, DARKGRAY);
 }
 
+bool switchToGame(Texture2D menuBackground, Texture2D levelBackground, Texture2D container, Texture2D elementsContainers, bool checkEnter)
+{
+    if (IsKeyPressed(KEY_ENTER) || checkEnter == 1)
+    {
+        drawLevelBackground(levelBackground);
+        drawGameElements(container, elementsContainers);
+        return 1;
+    }
+    else
+    {
+        drawMenu(menuBackground);
+        return 0;
+    }
+}
+
 void startGame()
 {
     InitWindow(1920, 1080, "Chemical Puzzle");
@@ -22,6 +37,7 @@ void startGame()
     Texture2D container = LoadTexture("../resources/container.png");
     Texture2D elementsContainers = LoadTexture("../resources/elementsContainers.png");
 
+    bool checkEnter = 0;
 
     while (!WindowShouldClose())
     {
@@ -29,13 +45,11 @@ void startGame()
 
         ClearBackground(RAYWHITE);
 
-        //drawMenu(menuBackground);
-
-        drawLevelBackground(levelBackground);
-        drawGameElements(container, elementsContainers);
+        checkEnter = switchToGame(menuBackground, levelBackground, container, elementsContainers, checkEnter);
 
         EndDrawing();
     }
+
     UnloadTexture(menuBackground); 
     UnloadTexture(levelBackground);
     UnloadTexture(container);
