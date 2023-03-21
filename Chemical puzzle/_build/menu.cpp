@@ -18,6 +18,7 @@ void startGame()
     ToggleFullscreen();
 
     Texture2D menuBackground = LoadTexture("../resources/menuBackground.png");
+    Texture2D levelBackground = LoadTexture("../resources/levelBackground.png");
 
     while (!WindowShouldClose())
     {
@@ -25,11 +26,14 @@ void startGame()
 
         ClearBackground(RAYWHITE);
 
-        drawMenu(menuBackground);
+        //drawMenu(menuBackground);
+
+        drawLevelBackground(levelBackground);
 
         EndDrawing();
     }
-    UnloadTexture(menuBackground);
+    UnloadTexture(menuBackground); 
+    UnloadTexture(levelBackground);
 
     CloseWindow();
 }
