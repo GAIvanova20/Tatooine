@@ -19,6 +19,9 @@ void startGame()
 
     Texture2D menuBackground = LoadTexture("../resources/menuBackground.png");
     Texture2D levelBackground = LoadTexture("../resources/levelBackground.png");
+    Texture2D container = LoadTexture("../resources/container.png");
+    Texture2D elementsContainers = LoadTexture("../resources/elementsContainers.png");
+
 
     while (!WindowShouldClose())
     {
@@ -29,11 +32,14 @@ void startGame()
         //drawMenu(menuBackground);
 
         drawLevelBackground(levelBackground);
+        drawGameElements(container, elementsContainers);
 
         EndDrawing();
     }
     UnloadTexture(menuBackground); 
     UnloadTexture(levelBackground);
+    UnloadTexture(container);
+    UnloadTexture(elementsContainers);
 
     CloseWindow();
 }
