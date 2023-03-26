@@ -10,13 +10,12 @@ void drawMenu(Texture2D menuBackground)
     DrawText("Created by team Tatooine", 710, 550, 40, DARKGRAY);
 }
 
-bool switchToGame(Texture2D menuBackground, Texture2D levelBackground, Texture2D container, Texture2D elementsContainerOne, Texture2D elementsContainerTwo, bool checkEnter)
+bool switchToGame(Texture2D menuBackground, Texture2D levelBackground, Texture2D container, Texture2D elementsContainers, bool checkEnter, Vector2 elementsPos, Vector2 containerPos)
 {
     if (IsKeyPressed(KEY_ENTER) || checkEnter == 1)
     {
         drawLevelBackground(levelBackground);
-        drawGameElements(container, elementsContainerOne, elementsContainerTwo);
-        //dragAndDropElements(container, elementsContainerOne, elementsContainerTwo);
+        drawGameElements(container, elementsContainers, elementsPos, containerPos);
         return 1;
     }
     else
@@ -37,18 +36,25 @@ void startGame()
     Texture2D menuBackground = LoadTexture("../resources/menuBackground.png");
     Texture2D levelBackground = LoadTexture("../resources/levelBackground.png");
     Texture2D container = LoadTexture("../resources/container.png");
-    Texture2D elementsContainerOne = LoadTexture("../resources/elementsContainerOne.png");
-    Texture2D elementsContainerTwo = LoadTexture("../resources/elementsContainerTwo.png");
+    Texture2D elementsContainers = LoadTexture("../resources/elementsContainers.png");
+
+    Vector2 mousePos = {-100, -100};
+    Vector2 elementsPos = { 300, 800 };
+    Vector2 containerPos = { 300, 300 };
 
     bool checkEnter = 0;
 
     while (!WindowShouldClose())
     {
+        mousePos = GetMousePosition();
+
+        elementsPos = dragAndDropElements(mousePos, elementsPos, containerPos);
+
         BeginDrawing();
 
         ClearBackground(RAYWHITE);
 
-        checkEnter = switchToGame(menuBackground, levelBackground, container, elementsContainerOne, elementsContainerTwo, checkEnter);
+        checkEnter = switchToGame(menuBackground, levelBackground, container, elementsContainers, checkEnter, elementsPos, containerPos);
 
         EndDrawing();
     }
@@ -56,8 +62,7 @@ void startGame()
     UnloadTexture(menuBackground); 
     UnloadTexture(levelBackground);
     UnloadTexture(container);
-    UnloadTexture(elementsContainerOne);
-    UnloadTexture(elementsContainerTwo);
+    UnloadTexture(elementsContainers);
 
     CloseWindow();
 }
