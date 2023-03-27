@@ -10,12 +10,12 @@ void drawMenu(Texture2D menuBackground)
     DrawText("Created by team Tatooine", 710, 550, 40, DARKGRAY);
 }
 
-bool switchToGame(Texture2D menuBackground, Texture2D levelBackground, Texture2D container, Texture2D elementsContainers, bool checkEnter, Vector2 elementsPos, Vector2 containerPos)
+bool switchToGame(Texture2D menuBackground, Texture2D levelBackground, Texture2D container, Texture2D elementsContainers, Texture2D elementsInsideContainers, Texture2D elementsToDrag, bool checkEnter, Vector2 elementsPos, Vector2 containerPos)
 {
     if (IsKeyPressed(KEY_ENTER) || checkEnter == 1)
     {
         drawLevelBackground(levelBackground);
-        drawGameElements(container, elementsContainers, elementsPos, containerPos);
+        drawGameElements(container, elementsContainers, elementsInsideContainers, elementsToDrag, elementsPos, containerPos);
         return 1;
     }
     else
@@ -37,6 +37,8 @@ void startGame()
     Texture2D levelBackground = LoadTexture("../resources/levelBackground.png");
     Texture2D container = LoadTexture("../resources/container.png");
     Texture2D elementsContainers = LoadTexture("../resources/elementsContainers.png");
+    Texture2D elementsInsideContainers = LoadTexture("../resources/molecules.png");
+    Texture2D elementsToDrag = LoadTexture("../resources/elementsContainers.png");
 
     Vector2 mousePos = {-100, -100};
     Vector2 elementsPos = { 300, 800 };
@@ -54,7 +56,7 @@ void startGame()
 
         ClearBackground(RAYWHITE);
 
-        checkEnter = switchToGame(menuBackground, levelBackground, container, elementsContainers, checkEnter, elementsPos, containerPos);
+        checkEnter = switchToGame(menuBackground, levelBackground, container, elementsContainers, elementsInsideContainers, elementsToDrag, checkEnter, elementsPos, containerPos);
 
         EndDrawing();
     }
@@ -63,6 +65,8 @@ void startGame()
     UnloadTexture(levelBackground);
     UnloadTexture(container);
     UnloadTexture(elementsContainers);
+    UnloadTexture(elementsInsideContainers);
+    UnloadTexture(elementsToDrag);
 
     CloseWindow();
 }
