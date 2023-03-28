@@ -12,12 +12,13 @@ bool isElementReturned = false;
 void drawGameElements(Texture2D container, Texture2D elementsContainers, Texture2D elementsInsideContainers, Texture2D elementsDropped, Vector2 elementsPos, Vector2 containerPos)
 {
     Rectangle elements = { 0, 0, elementsContainers.width / 2, elementsContainers.height };
-    Rectangle elementsInsideContainer = { 0, 0, elementsContainers.width / 2.2, elementsContainers.height * 1.2};
     Rectangle elementsCollision = { elementsPos.x, elementsPos.y, elementsContainers.width / 2, elementsContainers.height};
+    Rectangle elementsInsideContainer = { 0, 0, elementsInsideContainers.width / 2, elementsInsideContainers.height };
     Rectangle containerRec = { 0, 0, float(container.width), float(container.height) };
     Rectangle containerCollision = { containerPos.x, containerPos.y, float(container.width), float(container.height) };
 
     Vector2 centerElementsColl = { float(elementsContainers.width / 4), float(elementsContainers.height / 2) };
+    Vector2 centerElementsInsideColl = { float(elementsInsideContainers.width / 3) - 15, float(elementsInsideContainers.height / 3) + 30 };
     Vector2 centerContainerColl = { float(container.width / 2), float(container.height / 2) };
 
     DrawTexturePro(container, containerRec, containerCollision, centerContainerColl, 0, RAYWHITE);
@@ -30,7 +31,7 @@ void drawGameElements(Texture2D container, Texture2D elementsContainers, Texture
         }
         else
         {
-            DrawTexturePro(elementsInsideContainers, elementsInsideContainer, elementsCollision, centerElementsColl, 0, RAYWHITE);
+            DrawTexturePro(elementsInsideContainers, elementsInsideContainer, elementsCollision, centerElementsInsideColl, 0, RAYWHITE);
         }
     }
     else
