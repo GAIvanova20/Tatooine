@@ -1,5 +1,11 @@
 #pragma once
+
 #include "levelFunctions.h"
+#include "levelOne.h"
+
+#include <string>
+
+using namespace std;
 
 class elementsClass
 {
@@ -9,15 +15,9 @@ private:
     Rectangle elementMolecules;
 
 public:
-    elementsClass(string name, Rectangle elementRec, Rectangle molecules)
-    {
-        elementName = name;
-        elementContainer = elementRec;
-        elementMolecules = molecules;
-    }
+    elementsClass();
+    elementsClass(string name, Rectangle elementRec, Rectangle molecules);
 
-    void displayElement()
-    {
-
-    }
+    void drawElement(Texture2D elementsContainers, Rectangle elementsCollision, Vector2 centerElementsColl);
+    void drawMolecules(Texture2D elementsInsideContainers, Rectangle elementsCollision, Vector2 centerElementsInsideColl);
 };

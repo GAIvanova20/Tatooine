@@ -1,1 +1,25 @@
 #include "elementsClass.h"
+
+elementsClass::elementsClass()
+{
+    elementName = " ";
+    elementContainer = {0, 0, 0, 0};
+    elementMolecules = { 0, 0, 0, 0 };
+}
+
+elementsClass::elementsClass(string name, Rectangle elementRec, Rectangle molecules)
+{
+    elementName = name;
+    elementContainer = elementRec;
+    elementMolecules = molecules;
+}
+
+void elementsClass::drawElement(Texture2D elementsContainers, Rectangle elementsCollision, Vector2 centerElementsColl)
+{
+   DrawTexturePro(elementsContainers, elementContainer, elementsCollision, centerElementsColl, 0, RAYWHITE);
+}
+
+void elementsClass::drawMolecules(Texture2D elementsInsideContainers, Rectangle elementsCollision, Vector2 centerElementsInsideColl)
+{
+    DrawTexturePro(elementsInsideContainers, elementMolecules, elementsCollision, centerElementsInsideColl, 0, RAYWHITE);
+}
