@@ -173,6 +173,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\game\src\screens.h" />
+    <ClInclude Include="elementsClass.h" />
     <ClInclude Include="levelFunctions.h" />
     <ClInclude Include="levelOne.h" />
     <ClInclude Include="levelThree.h" />
@@ -186,6 +187,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="elementsClass.cpp" />
     <ClCompile Include="levelFunctions.cpp" />
     <ClCompile Include="levelOne.cpp" />
     <ClCompile Include="levelThree.cpp" />
