@@ -43,20 +43,20 @@ git clone https://github.com/GAIvanova20/Tatooine.git
 - [Clip studio paint](https://www.clipstudio.net/en/)- Game graphics and logo
 
 #### Language and library used:
-- <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/1200px-ISO_C%2B%2B_Logo.svg.png" width="20">(https://isocpp.org/) - language used to create the applicatiom
+- [C++](https://isocpp.org/) - language used to create the applicatiom
 - [Raylib](https://www.raylib.com/index.html) - external graphic library
 
 ## 👥 Authors <a name="authors"></a>
 *Everyone who has participated in making this project:*
 
-- [Pavel Yordanov](https://github.com/PTYordanov20) - Scrum Trainer
-- [Nikola Stoyanov](https://github.com/NMStoyanov20) - Backend Developer
-- [Galya Ivanova](https://github.com/GAIvanova20) - Backend Developer
-- [Petya Stoyanova](https://github.com/PGStoyanova20) - Quality assurance(QA)
+- [Galya Ivanova](https://github.com/GAIvanova20) - Scrum Trainer
+- [Zhasmina Mihaleva](https://github.com/ZSMihaleva20) - Backend Developer
+- [Aleksandra Petrova](https://github.com/APPetrova20) - Backend Developer
+- [Petya Stoyanova](https://github.com/PGStoyanova20) - Backend Developer
 
 ## 📋 Presentation and Documentation <a name="presentationAndDocumentation"></a>
 *You can view the presentation and documentations here:*
 
-- [Presentation](https://github.com/codingburgas/2223-educational-traveling-hydra/tree/main/Documents)
-- [Documentation](https://github.com/codingburgas/2223-educational-traveling-hydra/tree/main/Documents)
-- [QA Documentation](https://github.com/codingburgas/2223-educational-traveling-hydra/tree/main/Documents)
+- [Presentation]()
+- [Documentation]()
+- [QA Documentation]()
