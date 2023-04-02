@@ -47,10 +47,8 @@ Vector2 dragAndDropElements(Vector2 mousePos, Vector2 elementsPos, Vector2 conta
 
     if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT))
     {
-        if (CheckCollisionCircles(elementsPos, 100, containerPos, 100))
-        {
-            elementsPos = containerPos;
-        }
+
+           elementsPos = containerPos;
     }
 
     return elementsPos;

@@ -59,7 +59,6 @@ void startGame()
 
         ClearBackground(RAYWHITE);
 
-
         checkEnter = switchToGame(menuBackground, levelBackground, container, elementsContainers, elementsInsideContainers, checkEnter, elementsPos, containerPos, isElementReturned);
 
         EndDrawing();

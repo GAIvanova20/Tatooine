@@ -2,7 +2,7 @@
 
 elementsClass::elementsClass()
 {
-    elementName = " ";
+    elementName = "";
     elementContainer = {0, 0, 0, 0};
     elementMolecules = { 0, 0, 0, 0 };
 }
