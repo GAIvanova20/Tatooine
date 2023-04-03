@@ -2,8 +2,6 @@
   <img src="Chemical puzzle/resources/logo.png" alt="Logo"/>
 </p>
 
-<h1 align="center"> Tatooine </h1>
-
 <hr>
 
 ## 📄 Table of Contents
@@ -51,12 +49,12 @@ git clone https://github.com/GAIvanova20/Tatooine.git
 
 - [Galya Ivanova](https://github.com/GAIvanova20) - Scrum Trainer
 - [Zhasmina Mihaleva](https://github.com/ZSMihaleva20) - Backend Developer
-- [Aleksandra Petrova](https://github.com/APPetrova20) - Backend Developer
 - [Petya Stoyanova](https://github.com/PGStoyanova20) - Backend Developer
+- [Aleksandra Petrova](https://github.com/APPetrova20) - Designer
 
 ## 📋 Presentation and Documentation <a name="presentationAndDocumentation"></a>
 *You can view the presentation and documentations here:*
 
-- [Presentation]()
-- [Documentation]()
-- [QA Documentation]()
+- [Presentation](https://github.com/GAIvanova20/Tatooine/tree/main/Documentations)
+- [Documentation](https://github.com/GAIvanova20/Tatooine/tree/main/Documentations)
+- [QA Documentation](https://github.com/GAIvanova20/Tatooine/tree/main/Documentations)
