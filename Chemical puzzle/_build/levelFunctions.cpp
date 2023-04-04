@@ -18,9 +18,31 @@ bool checkMolecules(Vector2 elementsPos, Vector2 containerPos, bool isElementRet
         return 1;
     }
 }
+ 
+// Checks if the level is complete
+bool checkLevelCompletion(bool checkLevelCompletion, Vector2 elementPos, Vector2 containerPos)
+{
+    // Checks if the task is done
+    if ((elementPos.x == containerPos.x && elementPos.y == containerPos.y) || checkLevelCompletion == 1)
+    {
+        // Checks if player has pressed ENTER
+        if (IsKeyPressed(KEY_ENTER) || checkLevelCompletion == 1)
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+    else
+    {
+        return 0;
+    }
+}
 
 // Displays game elements for current level
-void drawGameElements(Texture2D container, Texture2D elementsContainers, Texture2D elementsInsideContainers, Vector2 elementsPos, Vector2 containerPos, bool isElementReturned)
+void drawGameElements(Texture2D container, Texture2D elementsContainers, Texture2D elementsInsideContainers, Vector2 elementsPos, Vector2 containerPos, bool isElementReturned, bool checkLevelCompletion)
 {
     // Rectangles for all elements and their collisions
     Rectangle elements = { 0, 0, float(elementsContainers.width / 2), float(elementsContainers.height) };
@@ -34,18 +56,27 @@ void drawGameElements(Texture2D container, Texture2D elementsContainers, Texture
     Vector2 centerElementsInsideColl = { float(elementsInsideContainers.width / 3) - 15, float(elementsInsideContainers.height / 3) + 30 };
     Vector2 centerContainerColl = { float(container.width / 2), float(container.height / 2) };
 
-    // Displays level one
-    displayLevelOne();
-    displayLevelOneContainers(container, containerRec, containerCollision, centerContainerColl);
-    displayLevelOneElements(elementsContainers, elementsInsideContainers, elements, elementsCollision, centerElementsColl,
-        centerElementsInsideColl, elementsInsideContainer, checkMolecules(elementsPos, containerPos, isElementReturned));
+    if (checkLevelCompletion == 0)
+    {
+        // Displays level one
+        displayLevelOne(elementsContainers, elementsInsideContainers, container,
+            elements, elementsCollision, containerRec, containerCollision, elementsInsideContainer,
+            centerElementsColl, centerElementsInsideColl, centerContainerColl, checkMolecules(elementsPos, containerPos, isElementReturned));
+    }
+    else
+    {
+        // Displays level two
+        displayLevelTwo(elementsContainers, elementsInsideContainers, container,
+            elements, elementsCollision, containerRec, containerCollision, elementsInsideContainer,
+            centerElementsColl, centerElementsInsideColl, centerContainerColl, checkMolecules(elementsPos, containerPos, isElementReturned));
+    }
 }
 
 // Drag and drop function for game elements
 Vector2 dragAndDropElements(Vector2 mousePos, Vector2 elementsPos, Vector2 containerPos)
 {
     // Checks if the player's mouse is on one of the element's container
-    if(CheckCollisionPointCircle(mousePos, elementsPos, 100))
+    if (CheckCollisionPointCircle(mousePos, elementsPos, 100))
     {
         if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
         {
@@ -60,6 +91,12 @@ Vector2 dragAndDropElements(Vector2 mousePos, Vector2 elementsPos, Vector2 conta
         {
             elementsPos = containerPos;
         }
+    }
+
+    // Re-arranges elements' position after a level is complete
+    if(IsKeyReleased(KEY_ENTER))
+    {
+        elementsPos = {300, 800};
     }
 
     return elementsPos;

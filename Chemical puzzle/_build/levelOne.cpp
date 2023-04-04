@@ -1,17 +1,13 @@
 #include "levelOne.h"
 
-// Displays which level the player is currently on
-void displayLevelOne()
-{
-    DrawText("Level One:", 50, 50, 40, DARKGRAY);
-}
 
 // Displays information about the product after the level is finished 
-void drawLevelCompletionText()
+void drawLevelOneCompletionText()
 {
     DrawText("Level Complete!", 750, 100, 55, DARKGRAY);
-    DrawText("Na2S", 400, 450, 50, DARKGRAY);
-    DrawText("Na", 920, 300, 50, RAYWHITE);
+    DrawText("Na S", 400, 450, 50, DARKGRAY);
+    DrawText("2", 465, 470, 35, DARKGRAY);
+    DrawText("2Na", 900, 300, 50, RAYWHITE);
     DrawText("S", 1440, 300, 50, RAYWHITE);
     DrawText("Did you know?", 750, 550, 55, DARKGRAY);
     DrawText("In the home, Sodium sulfide is used in drain cleaners, household cleaners - ", 50, 700, 45, DARKGRAY);
@@ -61,7 +57,7 @@ void displayLevelOneElements(Texture2D elementsContainers, Texture2D elementsIns
         {
             // Displays molecules in the container and end level text
             element[i].drawMolecules(elementsInsideContainers, elementsCollision, centerElementsInsideColl);
-            drawLevelCompletionText();
+            drawLevelOneCompletionText();
         }
     }
 }
@@ -79,4 +75,16 @@ void displayLevelOneContainers(Texture2D container, Rectangle containerRec, Rect
     // Displays chemical equation signs
     DrawText("->", 670, 250, 120, DARKGRAY);
     DrawText("+", 1150, 250, 120, DARKGRAY);
+}   
+
+// Displays level one
+void displayLevelOne(Texture2D elementsContainers, Texture2D elementsInsideContainers, Texture2D container, 
+    Rectangle elements, Rectangle elementsCollision, Rectangle containerRec, Rectangle containerCollision, Rectangle elementsInsideContainer, 
+    Vector2 centerElementsColl, Vector2 centerElementsInsideColl, Vector2 centerContainerColl, bool checkMolecules)
+{
+    DrawText("Level One: Using the elements below, create Na S.", 50, 50, 40, DARKGRAY);
+    DrawText("2", 1015, 70, 30, DARKGRAY);
+    displayLevelOneContainers(container, containerRec, containerCollision, centerContainerColl);
+    displayLevelOneElements(elementsContainers, elementsInsideContainers, elements, elementsCollision, centerElementsColl,
+        centerElementsInsideColl, elementsInsideContainer, checkMolecules);
 }

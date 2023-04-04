@@ -13,21 +13,32 @@ void drawMenu(Texture2D menuBackground)
     DrawText("Created by team Tatooine", 710, 550, 40, DARKGRAY);
 }
 
-// Switches between menu and game
-bool switchToGame(Texture2D menuBackground, Texture2D levelBackground, Texture2D container, Texture2D elementsContainers, Texture2D elementsInsideContainers,
-                    bool checkEnter, Vector2 elementsPos, Vector2 containerPos,bool isElementReturned)
+// Checks if ENTER is pressed switching to game
+bool checkMenuChange(bool checkEnter)
 {
-    // If ENTER is pressed it switches to game
     if (IsKeyPressed(KEY_ENTER) || checkEnter == 1)
     {
-        drawLevelBackground(levelBackground);
-        drawGameElements(container, elementsContainers, elementsInsideContainers, elementsPos, containerPos, isElementReturned);
         return 1;
     }
     else
     {
-        drawMenu(menuBackground);
         return 0;
+    }
+}
+
+// Switches between menu and game
+void switchToGame(Texture2D menuBackground, Texture2D levelBackground, Texture2D container, Texture2D elementsContainers, Texture2D elementsInsideContainers,
+                    bool checkEnter, Vector2 elementsPos, Vector2 containerPos,bool isElementReturned, bool checkLevelOneCompletion)
+{
+    // If ENTER is pressed it switches to game
+    if (checkEnter == 1)
+    {
+        drawLevelBackground(levelBackground);
+        drawGameElements(container, elementsContainers, elementsInsideContainers, elementsPos, containerPos, isElementReturned, checkLevelOneCompletion);
+    }
+    else
+    {
+        drawMenu(menuBackground);
     }
 }
 
@@ -58,23 +69,27 @@ void startGame()
     bool checkEnter = 0;
     // Checks if molecules are in the main container
     bool isElementReturned = 0;
+    // Checks if a level is complete
+    bool checkLevelOneCompletion = 0;
 
     while (!WindowShouldClose())
     {
         // Tracks mouse cursor position
         mousePos = GetMousePosition();
 
-        isElementReturned = checkMolecules(elementsPos, containerPos, isElementReturned);
-
         // Gets element position due to drag and drop function
         elementsPos = dragAndDropElements(mousePos, elementsPos, containerPos);
+
+        isElementReturned = checkMolecules(elementsPos, containerPos, isElementReturned);
+        checkLevelOneCompletion = checkLevelCompletion(checkLevelOneCompletion, elementsPos, containerPos);
+        checkEnter = checkMenuChange(checkEnter);
 
         BeginDrawing();
 
         // Default background if textures don't load
         ClearBackground(RAYWHITE);
 
-        checkEnter = switchToGame(menuBackground, levelBackground, container, elementsContainers, elementsInsideContainers, checkEnter, elementsPos, containerPos, isElementReturned);
+        switchToGame(menuBackground, levelBackground, container, elementsContainers, elementsInsideContainers, checkEnter, elementsPos, containerPos, isElementReturned, checkLevelOneCompletion);
 
         EndDrawing();
     }
